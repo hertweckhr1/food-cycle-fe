@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 // props.children => gives what's imbetween the component tags in the parent tag
+
+
 const Button = ({ onPress, children }) => {
   const {buttonStyle, textStyle} = styles;
 
@@ -16,23 +18,24 @@ const Button = ({ onPress, children }) => {
 const styles = {
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
+    color: 'white',
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
     paddingBottom: 10,
+    fontFamily: 'Marker Felt'
   },
   buttonStyle: {
     // flex: 1 will fill the container
-    flex: 1,
     // alignself tied to flexbox - streches to fill limits of container
     alignSelf: 'stretch',
-    backgroundColor: "#fff",
-    borderRadius: 5,
+    backgroundColor: "tomato",
+    borderRadius: 10,
     borderWidth: 1,
-    borderColorColor: '#007aff',
-    marginRight: 5,
-    marginLeft: 5,
+    borderColor: 'white',
+    marginBottom: 15,
+    marginRight: 20,
+    marginLeft: 20,
   }
 }
 

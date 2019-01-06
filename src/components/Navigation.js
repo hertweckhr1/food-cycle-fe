@@ -34,35 +34,41 @@ const SettingsTabBarIcon = ({ tintColor }) => (
 
 // tab
 const TabNavigator = createBottomTabNavigator({
-  Home: {
-    screen:Home,
-    navigationOptions: {
-      label: 'Home',
-      tabBarIcon: HomeTabBarIcon
-    }
+    Home: {
+      screen:Home,
+      navigationOptions: {
+        label: 'Home',
+        tabBarIcon: HomeTabBarIcon
+      }
+    },
+    UserDetails: {
+      screen: UserDetails,
+      navigationOptions: {
+        label: 'Home',
+        tabBarIcon: UserDetailsTabBarIcon
+      }
+    },
+    AddDonation: {
+      screen: AddDonation,
+      navigationOptions: {
+        label: 'Home',
+        tabBarIcon: AddDonationTabBarIcon
+      }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: {
+        label: 'Home',
+        tabBarIcon: SettingsTabBarIcon
+      }
+    },
   },
-  UserDetails: {
-    screen: UserDetails,
-    navigationOptions: {
-      label: 'Home',
-      tabBarIcon: UserDetailsTabBarIcon
+  {
+      tabBarOptions: {
+        activeTintColor: 'tomato'
+      }
     }
-  },
-  AddDonation: {
-    screen: AddDonation,
-    navigationOptions: {
-      label: 'Home',
-      tabBarIcon: AddDonationTabBarIcon
-    }
-  },
-  Settings: {
-    screen: Settings,
-    navigationOptions: {
-      label: 'Home',
-      tabBarIcon: SettingsTabBarIcon
-    }
-  },
-});
+);
 
 const StackNavigator = createStackNavigator(
   {
@@ -85,8 +91,8 @@ const StackNavigator = createStackNavigator(
             size={30}
           />
         ),
-        headerTitle: <Image style={{width: 100, resizeMode:'contain'}} source={require('../assets/white-logo.png')} />
-,
+        headerTitle: <Image style={{width: 100, resizeMode:'contain'}}
+                    source={require('../assets/white-logo.png')} />,
       };
     }
   }
