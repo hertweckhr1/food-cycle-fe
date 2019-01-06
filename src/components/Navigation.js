@@ -10,6 +10,7 @@ import { Home, WelcomeScreen, Settings, UserDetails, AddDonation } from '../scre
 
 // clean this up so it is a function, and only have to input name into function
 class Navigation extends Component {
+
   render() {
     return <AppContainer />;
   }
@@ -70,15 +71,22 @@ const StackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => {
       return {
+        headerStyle: {
+          borderBottomColor: '#9ACD32',
+          backgroundColor: 'black',
+          borderBottomWidth: 4,
+          height: 70
+        },
         headerRight: (
           <Icon
-            style={{ paddingRight: 10 }}
+            style={{ paddingRight: 30, color: 'white' }}
             onPress={() => navigation.openDrawer()}
             name="log-out"
             size={30}
           />
         ),
-        headerTitle: 'Food-Cycle'
+        headerTitle: <Image style={{width: 100, resizeMode:'contain'}} source={require('../assets/white-logo.png')} />
+,
       };
     }
   }
