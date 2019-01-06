@@ -6,7 +6,7 @@ import { createSwitchNavigator,
   createAppContainer,
   createStackNavigator
 } from 'react-navigation';
-import { Home, Settings, UserDetails, AddDonation, Welcome } from '../screens'
+import { Home, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
 
 // clean this up so it is a function, and only have to input name into function
 class Navigation extends Component {
@@ -30,9 +30,6 @@ const AddDonationTabBarIcon = ({ tintColor }) => (
 const SettingsTabBarIcon = ({ tintColor }) => (
   <Icon name="construct" size={20} color={tintColor} />
 );
-
-
-
 
 // tab
 const TabNavigator = createBottomTabNavigator({
@@ -66,6 +63,34 @@ const TabNavigator = createBottomTabNavigator({
   },
 });
 
+const StackNavigator = createStackNavigator(
+  {
+    TabNavigator: TabNavigator
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerRight: (
+          <Icon
+            style={{ paddingRight: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="log-out"
+            size={30}
+          />
+        ),
+        headerTitle: 'Food-Cycle'
+      };
+    }
+  }
+);
+
+const AppSwitchNavigator = createSwitchNavigator({
+  Welcome: { screen: WelcomeScreen },
+  Dashboard: { screen: StackNavigator }
+});
+
+const AppContainer = createAppContainer(AppSwitchNavigator)
 
 
-const AppContainer = createAppContainer(TabNavigator);
+
+// const AppContainer = createAppContainer(TabNavigator);
