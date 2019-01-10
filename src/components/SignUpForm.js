@@ -62,7 +62,7 @@ class SignUpForm extends Component {
             <TextInput style={styles.inputs}
                 placeholder="Email"
                 underlineColorAndroid='transparent'
-                onChangeText={email => this.setState({ email })}/>
+                onChangeText={email => this.setState({ email: email.toLowerCase() })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
