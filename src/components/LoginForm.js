@@ -79,7 +79,7 @@ class LoginForm extends Component {
             <Text>Forgot your password?</Text>
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('register')}>
+        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('SignUp')}>
             <Text>Register</Text>
         </TouchableHighlight>
       </View>

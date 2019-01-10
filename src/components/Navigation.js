@@ -7,6 +7,7 @@ import { createSwitchNavigator,
   createStackNavigator
 } from 'react-navigation';
 import { Home, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
+import SignUpForm from './SignUpForm';
 
 // clean this up so it is a function, and only have to input name into function
 class Navigation extends Component {
@@ -70,9 +71,12 @@ const TabNavigator = createBottomTabNavigator({
     }
 );
 
-const StackNavigator = createStackNavigator(
-  {
-    TabNavigator: TabNavigator
+const StackNavigator = createStackNavigator({
+    TabNavigator: TabNavigator,
+    SignUp: {
+      screen: SignUpForm,
+
+    }
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
