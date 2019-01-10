@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
   onLogIn = () => {
     console.log('Button Pressed!');
-    const { email, password } = this.state
+    const { email: email, password } = this.state
     const url = `http://127.0.0.1:8000/api/user/token/`;
     axios
       .post(url, {email, password})
@@ -53,7 +53,7 @@ class LoginForm extends Component {
               placeholder="Email"
               keyboardType="email-address"
               underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({email: email})}/>
+              onChangeText={(email) => this.setState({email: email.toLowerCase()})}/>
         </View>
 
         <View style={styles.inputContainer}>
