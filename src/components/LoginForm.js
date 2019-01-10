@@ -23,11 +23,11 @@ class LoginForm extends Component {
   }
 
   onLogIn = () => {
-    console.log('Button Pressed!')
+    console.log('Button Pressed!');
     const { email, password } = this.state
     const url = `http://127.0.0.1:8000/api/user/token/`;
     axios
-      .post(url, email, password)
+      .post(url, {email, password})
       .then(response => {
         console.log('API login success!');
         console.log(response);
@@ -40,7 +40,7 @@ class LoginForm extends Component {
       })
       .catch(error => {
         console.log(error.response.data.errors);
-        this.error('Log attempt failed. Please try again.')
+        this.setState({error: 'Log attempt failed. Please try again.'});
       });
   }
 
@@ -70,7 +70,7 @@ class LoginForm extends Component {
         <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
-          onPress={() => this.onLogIn}
+          onPress={() => this.onLogIn()}
         >
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>

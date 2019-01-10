@@ -16,11 +16,11 @@ class SignUpForm extends Component {
   state = {
     email: '',
     password: '',
-    is_doner: '',
-    point_of_contact: '',
-    company_name: '',
-    street_address: '',
-    street_address2: '',
+    isDoner: '',
+    pointOfContact: '',
+    companyName: '',
+    streetAddress: '',
+    streetAddress2: '',
     city: '',
     state: '',
     zip: '',
@@ -61,65 +61,60 @@ class SignUpForm extends Component {
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Email"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={email => this.setState({ email })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Company Name"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={companyName => this.setState({ companyName })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Point of Contact"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={pointOfContact => this.setState({ pointOfContact })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Doner"
                 keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={doner => this.setState({ isDoner: doner })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Street Address"
                 keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={streetAddress => this.setState({ streetAddress })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Street Address2(optional)"
                 keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={streetAddress2 => this.setState({ streetAddress2 })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="City"
                 keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={city => this.setState({ city })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="State"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={state => this.setState({ state})}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Zip"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={zip => this.setState({ zip })}/>
           </View>
 
 

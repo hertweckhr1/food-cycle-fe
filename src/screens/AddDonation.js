@@ -14,17 +14,16 @@ import axios from 'axios';
 
 
 class AddDonation extends React.Component {
+  // doner should be user signed in
   state = {
-    email: '',
-    password: '',
-    is_doner: '',
-    point_of_contact: '',
-    company_name: '',
-    street_address: '',
-    street_address2: '',
-    city: '',
-    state: '',
-    zip: '',
+    doner: '',
+    productType: '',
+    productDescription: '',
+    measurement: '',
+    quantity: '',
+    pickupDetails: '',
+    pickupStartTime: '',
+    pickupEndTime: '',
     error: '',
   };
 
@@ -32,26 +31,33 @@ class AddDonation extends React.Component {
     Alert.alert("Alert", "Button pressed "+viewId);
   }
 
-  onLogIn = () => {
+  onSubmitDonation = () => {
     // Doner needs to automatically be user logged in in axios post request
     console.log('Button Pressed!')
-    const { email, password } = this.state
-    const url = `http://127.0.0.1:8000/api/user/create/`;
+    const { doner, productType, productDescription, measurement,
+      quantity, pickupDetails, pickupStartTime, pickupEndTime } = this.state
+    const url = `http://127.0.0.1:8000/api/donation/donations`;
     axios
-      .post(url, email, password)
+      .post(url, { user: doner, product_type: productType, product_description: productDescription,
+        product_measurement: measurement, quantity: quantity, pickup_details: pickupDetails,
+        pickup_starttime: pickupStartTime, pickup_endtime: pickupEndTime})
       .then(response => {
         console.log('API login success!');
         console.log(response);
         this.setState({
-          email: '',
-          password: '',
+          productType: '',
+          productDescription: '',
+          measurement: '',
+          quantity: '',
+          pickupDetails: '',
+          pickupStartTime: '',
+          pickupEndTime: '',
           error: '',
         });
-        this.props.navigation.navigate('Home')
       })
       .catch(error => {
         console.log(error.response.data.errors);
-        this.error('Log attempt failed. Please try again.')
+        this.error('Donation attempt failed. Please try again.')
       });
   }
 
@@ -63,51 +69,44 @@ class AddDonation extends React.Component {
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Product Type"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={productType => this.setState({ productType })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Product Description"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={ productDescription => this.setState({ productDescription })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Measurement"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={measurement => this.setState({ measurement })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Quantity"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={quantity => this.setState({ quantity })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Pick Up Details"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={pickupDetails => this.setState({ pickupDetails })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Pick Up Start Time"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={pickupStartTime => this.setState({ pickupStartTime })}/>
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Pick Up End Time"
-                keyboardType="email-address"
                 underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}/>
+                onChangeText={pickupEndTime => this.setState({ pickupEndTime })}/>
           </View>
 
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    padding: 50,
+    padding: 30,
   },
   title: {
     justifyContent: 'center',
