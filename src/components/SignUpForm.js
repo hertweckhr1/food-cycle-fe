@@ -12,10 +12,18 @@ import {
 } from 'react-native';
 import axios from 'axios';
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
   state = {
     email: '',
     password: '',
+    is_doner: '',
+    point_of_contact: '',
+    company_name: '',
+    street_address: '',
+    street_address2: '',
+    city: '',
+    state: '',
+    zip: '',
     error: '',
   };
 
@@ -26,7 +34,7 @@ class LoginForm extends Component {
   onLogIn = () => {
     console.log('Button Pressed!')
     const { email, password } = this.state
-    const url = `http://127.0.0.1:8000/api/user/token/`;
+    const url = `http://127.0.0.1:8000/api/user/create/`;
     axios
       .post(url, email, password)
       .then(response => {
@@ -201,4 +209,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginForm;
+export default SignUpForm;

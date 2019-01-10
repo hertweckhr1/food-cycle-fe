@@ -75,7 +75,6 @@ const StackNavigator = createStackNavigator({
     TabNavigator: TabNavigator,
     SignUp: {
       screen: SignUpForm,
-
     }
   },
   {
