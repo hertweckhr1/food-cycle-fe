@@ -10,13 +10,14 @@ import {
   Alert,
   ScrollView,
 } from 'react-native';
+import CheckBox from 'react-native-check-box'
 import axios from 'axios';
 
 class SignUpForm extends Component {
   state = {
     email: '',
     password: '',
-    isDoner: '',
+    isDoner: false,
     pointOfContact: '',
     companyName: '',
     streetAddress: '',
@@ -24,6 +25,7 @@ class SignUpForm extends Component {
     city: '',
     state: '',
     zip: '',
+    isDonee: false,
     error: '',
   };
 
@@ -31,25 +33,38 @@ class SignUpForm extends Component {
     Alert.alert("Alert", "Button pressed "+viewId);
   }
 
-  onLogIn = () => {
+  onSignUp = () => {
     console.log('Button Pressed!')
-    const { email, password } = this.state
+    const { email, password, isDoner, pointOfContact, companyName,
+      streetAddress, streetAddress2, city, state, zip } = this.state
     const url = `http://127.0.0.1:8000/api/user/create/`;
     axios
-      .post(url, email, password)
+      .post(url, {email, password, is_doner: isDoner,
+        point_of_contact: pointOfContact, company_name: companyName,
+        street_address: streetAddress, street_address2: streetAddress2,
+        city, state, zip})
       .then(response => {
         console.log('API login success!');
         console.log(response);
         this.setState({
           email: '',
           password: '',
+          isDoner: false,
+          pointOfContact: '',
+          companyName: '',
+          streetAddress: '',
+          streetAddress2: '',
+          city: '',
+          isDonee: false,
+          state: '',
+          zip: '',
           error: '',
         });
         this.props.navigation.navigate('Home')
       })
       .catch(error => {
         console.log(error.response.data.errors);
-        this.error('Log attempt failed. Please try again.')
+        this.setState({ error: 'Sign Up attempt failed. Please fill out all fields.' })
       });
   }
 
@@ -58,6 +73,30 @@ class SignUpForm extends Component {
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.title}>Sign Up Here</Text>
+
+          <View style={styles.inputContainer}>
+            <CheckBox style={styles.checkbox}
+              onClick={()=>{
+                this.setState({
+                    isDoner: !this.state.isDoner
+                })
+              }}
+              isChecked={this.state.isDoner}
+              leftText={"Doner"}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <CheckBox style={styles.checkbox}
+              onClick={()=>{
+                this.setState({
+                    isDonee: !this.state.isDonee
+                })
+              }}
+              isChecked={this.state.isDonee}
+              leftText={"Donee"}
+            />
+          </View>
+
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Email"
@@ -76,13 +115,7 @@ class SignUpForm extends Component {
                 underlineColorAndroid='transparent'
                 onChangeText={pointOfContact => this.setState({ pointOfContact })}/>
           </View>
-          <View style={styles.inputContainer}>
-            <TextInput style={styles.inputs}
-                placeholder="Doner"
-                keyboardType="email-address"
-                underlineColorAndroid='transparent'
-                onChangeText={doner => this.setState({ isDoner: doner })}/>
-          </View>
+
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 placeholder="Street Address"
@@ -131,7 +164,7 @@ class SignUpForm extends Component {
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
           <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
-            onPress={() => this.onLogIn}
+            onPress={() => this.onSignUp()}
           >
             <Text style={styles.loginText}>Sign Up Now</Text>
           </TouchableHighlight>
@@ -198,9 +231,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 12,
     alignSelf: 'center',
-    color: 'red',
+    color: 'blue',
+    padding: 10
+  },
+  checkbox: {
+    flex: 1,
+    padding: 10,
+    height:45,
+    marginLeft:16,
+    color: '#c9c1c1',
   }
 });
 

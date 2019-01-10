@@ -5,7 +5,6 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   TouchableHighlight,
   Alert,
   ScrollView,
@@ -13,7 +12,7 @@ import {
 import axios from 'axios';
 
 
-class AddDonation extends React.Component {
+class AddDonation extends Component {
   // doner should be user signed in
   state = {
     doner: '',
@@ -52,12 +51,12 @@ class AddDonation extends React.Component {
           pickupDetails: '',
           pickupStartTime: '',
           pickupEndTime: '',
-          error: '',
         });
+        this.setState({error: 'Donation successfully posted.'})
       })
       .catch(error => {
         console.log(error.response.data.errors);
-        this.error('Donation attempt failed. Please try again.')
+        this.setState({error: 'Donation attempt failed. Please try again.'})
       });
   }
 
@@ -179,9 +178,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 12,
     alignSelf: 'center',
-    color: 'red',
+    color: 'blue',
+    padding: 10
   }
 });
 

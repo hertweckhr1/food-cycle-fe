@@ -134,9 +134,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 12,
     alignSelf: 'center',
-    color: 'red',
+    color: 'blue',
+    padding: 10
   }
 });
 
