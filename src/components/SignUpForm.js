@@ -12,13 +12,9 @@ import {
 import Icon from 'react-native-ionicons';
 
 class LoginForm extends Component {
-
-  constructor(props) {
-    super(props);
     state = {
       email   : '',
       password: '',
-    }
   }
 
   onClickListener = (viewId) => {
@@ -32,9 +28,11 @@ class LoginForm extends Component {
           <Icon name="mail" size={30} color="black" style={styles.inputIcon} />
           <TextInput style={styles.inputs}
               placeholder="Email"
+              label="Email"
+              value="{this.state.email}"
               keyboardType="email-address"
               underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({email})}/>
+              onChangeText={email => this.setState({ email: email})}/>
         </View>
 
         <View style={styles.inputContainer}>

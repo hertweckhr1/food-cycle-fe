@@ -6,23 +6,42 @@ import {
   TextInput,
   Button,
   TouchableHighlight,
-  Image,
   Alert
 } from 'react-native';
 import Icon from 'react-native-ionicons';
+import axios from 'axios';
 
 class LoginForm extends Component {
-
-  constructor(props) {
-    super(props);
-    state = {
-      email   : '',
-      password: '',
-    }
-  }
+  state = {
+    email: '',
+    password: '',
+    error: '',
+  };
 
   onClickListener = (viewId) => {
     Alert.alert("Alert", "Button pressed "+viewId);
+  }
+
+  onLogIn = () => {
+    console.log('Button Pressed!')
+    const { email, password } = this.state
+    const url = `http://127.0.0.1:8000/api/user/token/`;
+    axios
+      .post(url, email, password)
+      .then(response => {
+        console.log('API login success!');
+        console.log(response);
+        this.setState({
+          email: '',
+          password: '',
+          error: '',
+        });
+        this.props.navigation.navigate('Home')
+      })
+      .catch(error => {
+        console.log(error.response.data.errors);
+        this.error('Log attempt failed. Please try again.')
+      });
   }
 
   render() {
@@ -34,19 +53,25 @@ class LoginForm extends Component {
               placeholder="Email"
               keyboardType="email-address"
               underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({email})}/>
+              onChangeText={(email) => this.setState({email: email})}/>
         </View>
 
         <View style={styles.inputContainer}>
           <Icon name="key" size={30} color="black" style={styles.inputIcon} />
           <TextInput style={styles.inputs}
               placeholder="Password"
+              label="Password"
+              value={this.state.password}
               secureTextEntry={true}
               underlineColorAndroid='transparent'
-              onChangeText={(password) => this.setState({password})}/>
+              onChangeText={password => this.setState({password: password})}/>
         </View>
 
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.props.navigation.navigate('Home')}>
+        <Text style={styles.errorTextStyle}>{this.state.error}</Text>
+
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
+          onPress={() => this.onLogIn}
+        >
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
 
@@ -107,6 +132,11 @@ const styles = StyleSheet.create({
   loginText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  errorTextStyle: {
+    fontSize: 20,
+    alignSelf: 'center',
+    color: 'red',
   }
 });
 
