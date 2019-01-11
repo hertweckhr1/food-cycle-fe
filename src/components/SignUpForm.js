@@ -44,7 +44,7 @@ class SignUpForm extends Component {
         street_address: streetAddress, street_address2: streetAddress2,
         city, state, zip})
       .then(response => {
-        console.log('API login success!');
+        console.log('API Sign Up success!');
         console.log(response);
         this.setState({
           email: '',
@@ -60,7 +60,7 @@ class SignUpForm extends Component {
           zip: '',
           error: '',
         });
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate('Welcome')
       })
       .catch(error => {
         console.log(error.response.data.errors);
