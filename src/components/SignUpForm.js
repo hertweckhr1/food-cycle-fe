@@ -234,14 +234,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
     alignSelf: 'center',
     color: 'blue',
-    padding: 10
+    padding: 10,
+    textAlign: 'center'
   },
   checkbox: {
     flex: 1,
     padding: 10,
     height:45,
     marginLeft:16,
-    color: '#c9c1c1',
+    color: '#C9C1C1',
   }
 });
 
