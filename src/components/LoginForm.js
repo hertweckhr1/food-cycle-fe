@@ -16,6 +16,7 @@ class LoginForm extends Component {
     email: '',
     password: '',
     error: '',
+    token: '',
   };
 
   onClickListener = (viewId) => {
@@ -30,12 +31,14 @@ class LoginForm extends Component {
       .post(url, {email, password})
       .then(response => {
         console.log('API login success!');
-        console.log(response);
+        console.log(response.data);
         this.setState({
           email: '',
           password: '',
           error: '',
+          token: response.data['token']
         });
+        console.log(this.state.token)
         this.props.navigation.navigate('Home')
       })
       .catch(error => {
