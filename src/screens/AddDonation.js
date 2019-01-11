@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     alignSelf: 'center',
     color: 'blue',
-    padding: 10
+    padding: 5
   }
 });
 
