@@ -111,7 +111,7 @@ class AddDonation extends Component {
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
           <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
-            onPress={() => this.onLogIn}
+            onPress={() => this.onSubmitDonation()}
           >
             <Text style={styles.loginText}>Add Donation</Text>
           </TouchableHighlight>

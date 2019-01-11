@@ -74,7 +74,7 @@ class SignUpForm extends Component {
         <View style={styles.container}>
           <Text style={styles.title}>Sign Up Here</Text>
 
-          <View style={styles.inputContainer}>
+          <View style={styles.checkboxInputContainer}>
             <CheckBox style={styles.checkbox}
               onClick={()=>{
                 this.setState({
@@ -85,7 +85,7 @@ class SignUpForm extends Component {
               leftText={"Doner"}
             />
           </View>
-          <View style={styles.inputContainer}>
+          <View style={styles.checkboxInputContainer}>
             <CheckBox style={styles.checkbox}
               onClick={()=>{
                 this.setState({
@@ -202,6 +202,17 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems:'center'
   },
+  checkboxInputContainer : {
+    borderBottomColor: 'gray',
+    backgroundColor: 'tomato',
+    borderRadius:30,
+    borderBottomWidth: 1,
+    width:300,
+    height:45,
+    marginBottom:20,
+    flexDirection: 'row',
+    alignItems:'center'
+  },
   inputs:{
       height:45,
       marginLeft:16,
@@ -242,7 +253,6 @@ const styles = StyleSheet.create({
     padding: 10,
     height:45,
     marginLeft:16,
-    color: '#C9C1C1',
   }
 });
 
