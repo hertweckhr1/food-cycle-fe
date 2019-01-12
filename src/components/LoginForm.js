@@ -23,7 +23,7 @@ class LoginForm extends Component {
     Alert.alert("Alert", "Button pressed "+viewId);
   }
 
-  onLogIn = () => {
+  onLogIn2 = () => {
     console.log('Button Pressed!');
     const { email: email, password } = this.state
     const url = `http://127.0.0.1:8000/api/user/token/`;
@@ -48,7 +48,7 @@ class LoginForm extends Component {
   }
 
   render() {
-
+    console.log(this.state.email)
     return (
       <View>
         <View style={styles.inputContainer}>
@@ -57,7 +57,7 @@ class LoginForm extends Component {
               placeholder="Email"
               keyboardType="email-address"
               underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({email: email.toLowerCase()})}/>
+              onChangeText={email => this.setState({email: email.toLowerCase()})}/>
         </View>
 
         <View style={styles.inputContainer}>
@@ -68,13 +68,13 @@ class LoginForm extends Component {
               value={this.state.password}
               secureTextEntry={true}
               underlineColorAndroid='transparent'
-              onChangeText={password => this.setState({password: password})}/>
+              onChangeText={password => this.setState({password})}/>
         </View>
 
         <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
-          onPress={() => {this.props.loginUserCallback(this.state.email, this.state.password)}}
+          onPress={() => this.props.screenProps.loginUserCallback(this.state.email, this.state.password)}
         >
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>

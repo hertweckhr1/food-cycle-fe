@@ -8,8 +8,9 @@ class FoodCycle extends Component {
     donations: [],
   }
 
-  onLogIn (email, password) {
+  onLogIn = (email, password) => {
     console.log('Button Pressed!');
+    console.log(email)
     // const { , password } = this.state
     const url = `http://127.0.0.1:8000/api/user/token/`;
     const userURL = `http://127.0.0.1:8000/api/user/me/`
@@ -45,7 +46,10 @@ class FoodCycle extends Component {
 
 
   render() {
-    return <Navigation greeting="hello" loginUserCallback={this.onLogIn.bind(this)} screenProps={{ loginUserCallback: this.onLogIn.bind(this) }}/>;
+    const screenProps = {
+      loginUserCallback: this.onLogIn
+    }
+    return <Navigation screenProps={screenProps}/>;
   }
 }
 
