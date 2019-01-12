@@ -4,7 +4,7 @@ import Navigation from './Navigation'
 
 class FoodCycle extends Component {
   state = {
-    user: [],
+    user: {},
     donations: [],
   }
 
@@ -23,8 +23,13 @@ class FoodCycle extends Component {
           .get(userURL, { headers: { Authorization: "Token " + response.data['token']}})
           .then(response => {
             console.log('I got the user info!')
-            console.log(response)
-            this.props.navigation.navigate('Home')
+            // console.log(response.data)
+            this.setState({
+              user: response.data,
+              error: '',
+            });
+            console.log(this.state.user)
+            // this.props.navigation.navigate('Home')
           })
           .catch(error => {
             console.log('error!');
