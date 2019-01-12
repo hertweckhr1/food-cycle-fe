@@ -8,9 +8,9 @@ class FoodCycle extends Component {
     donations: [],
   }
 
-  onLogIn = () => {
+  onLogIn (email, password) {
     console.log('Button Pressed!');
-    const { email: email, password } = this.state
+    // const { , password } = this.state
     const url = `http://127.0.0.1:8000/api/user/token/`;
     const userURL = `http://127.0.0.1:8000/api/user/me/`
     axios
@@ -27,7 +27,7 @@ class FoodCycle extends Component {
           })
           .catch(error => {
             console.log('error!');
-            this.setState({error: 'Token not working'})
+            // this.setState({error: 'Token not working'})
           });
         // console.log(response.data);
         // this.setState({
@@ -43,9 +43,9 @@ class FoodCycle extends Component {
       });
   }
 
-  
+
   render() {
-    return <Navigation />;
+    return <Navigation greeting="hello" loginUserCallback={this.onLogIn.bind(this)} screenProps={{ loginUserCallback: this.onLogIn.bind(this) }}/>;
   }
 }
 
