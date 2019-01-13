@@ -6,7 +6,7 @@ import { createSwitchNavigator,
   createAppContainer,
   createStackNavigator
 } from 'react-navigation';
-import { Home, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
+import { Info, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
 import SignUpForm from './SignUpForm';
 
 // clean this up so it is a function, and only have to input name into function
@@ -24,8 +24,8 @@ class Navigation extends Component {
 export default Navigation;
 
 
-const HomeTabBarIcon = ({ tintColor }) => (
-  <Icon name="home" size={20} color={tintColor} />
+const InfoTabBarIcon = ({ tintColor }) => (
+  <Icon name="information-circle-outline" size={20} color={tintColor} />
 );
 const UserDetailsTabBarIcon = ({ tintColor }) => (
   <Icon name="contact" size={20} color={tintColor} />
@@ -39,31 +39,31 @@ const SettingsTabBarIcon = ({ tintColor }) => (
 
 // tab
 const TabNavigator = createBottomTabNavigator({
-    Home: {
-      screen:Home,
-      navigationOptions: {
-        label: 'Home',
-        tabBarIcon: HomeTabBarIcon
-      }
-    },
     UserDetails: {
       screen: UserDetails,
       navigationOptions: {
-        label: 'Home',
+        label: 'User Details',
         tabBarIcon: UserDetailsTabBarIcon
       }
     },
     AddDonation: {
       screen: AddDonation,
       navigationOptions: {
-        label: 'Home',
+        label: 'Add Donation',
         tabBarIcon: AddDonationTabBarIcon
+      }
+    },
+    Info: {
+      screen:Info,
+      navigationOptions: {
+        label: 'Q & A',
+        tabBarIcon: InfoTabBarIcon
       }
     },
     Settings: {
       screen: Settings,
       navigationOptions: {
-        label: 'Home',
+        label: 'Settings',
         tabBarIcon: SettingsTabBarIcon
       }
     },

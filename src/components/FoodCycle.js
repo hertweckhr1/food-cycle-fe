@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navigation from './Navigation'
+import Navigation from './Navigation';
+import NavigationService from './NavigationService';
 
 class FoodCycle extends Component {
   state = {
@@ -29,7 +30,8 @@ class FoodCycle extends Component {
               error: '',
             });
             console.log(this.state.user)
-            // this.props.navigation.navigate('UserDetails')
+            console.log(navigatorRef)
+            NavigationService.navigate('Dashboard')
           })
           .catch(error => {
             console.log('error!');
@@ -54,7 +56,11 @@ class FoodCycle extends Component {
     const screenProps = {
       loginUserCallback: this.onLogIn
     }
-    return <Navigation screenProps={screenProps}/>;
+    return <Navigation
+      ref={navigatorRef => {
+        NavigationService.setTopLevelNavigator(navigatorRef);
+      }}
+      screenProps={screenProps}/>;
   }
 }
 

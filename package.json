@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "native-base": "^2.10.0",
     "prop-types": "^15.6.2",
     "react": "16.6.3",
     "react-axios": "^2.0.3",
     "react-native": "0.57.8",
+    "react-native-accordion": "^1.0.1",
     "react-native-axios": "^0.17.1",
     "react-native-check-box": "^2.1.7",
     "react-native-gesture-handler": "^1.0.12",
