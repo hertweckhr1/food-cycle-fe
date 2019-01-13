@@ -28,6 +28,27 @@ class FoodCycle extends Component {
     });
   };
 
+  addDonation = (newDonation) => {
+    const apiPayLoad = {
+      ...newDonation,
+    };
+    axios
+    .post('http://127.0.0.1:8000/api/donation/donations/', apiPayLoad)
+    .then(response => {
+      console.log('added donation!');
+      console.log(response);
+      const { donations } = this.state
+      donations.push(response.data);
+
+      this.setState({
+        donations,
+      })
+    })
+    .catch((error) => {
+      console.log('donation adding error')
+    })
+  }
+
   onLogIn = (email, password) => {
     console.log('Button Pressed!');
     console.log(email)
