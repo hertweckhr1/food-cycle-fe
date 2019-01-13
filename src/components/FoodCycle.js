@@ -10,6 +10,24 @@ class FoodCycle extends Component {
     donations: [],
   }
 
+  loadDonations = () => {
+    axios
+    .get('http://127.0.0.1:8000/api/donation/donations/')
+    .then(response => {
+      console.log('Loaded Donations');
+      const donationList = response.data.map(donation => {
+        return donation;
+      })
+      this.setState({
+        donations: donationList
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      console.log('donation load error');
+    });
+  };
+
   onLogIn = (email, password) => {
     console.log('Button Pressed!');
     console.log(email)
@@ -50,6 +68,10 @@ class FoodCycle extends Component {
         console.log(error.response.data.errors);
         // this.setState({error: 'Log attempt failed. Please try again.'});
       });
+  }
+
+  componentDidMount() {
+    this.loadDonations();
   }
 
 
