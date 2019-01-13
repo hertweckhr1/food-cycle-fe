@@ -29,7 +29,7 @@ class FoodCycle extends Component {
               error: '',
             });
             console.log(this.state.user)
-            // this.props.navigation.navigate('Home')
+            // this.props.navigation.navigate('UserDetails')
           })
           .catch(error => {
             console.log('error!');

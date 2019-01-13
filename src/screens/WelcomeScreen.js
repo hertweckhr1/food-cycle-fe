@@ -9,7 +9,8 @@ class WelcomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Image source={require('../assets/food-cycle.png')} />
-        <LoginForm screenProps={{loginUserCallback: this.props.screenProps.loginUserCallback}} />
+        <LoginForm navigation={this.props.navigation}
+          screenProps={{loginUserCallback: this.props.screenProps.loginUserCallback}} />
       </View>
     );
   }

@@ -48,7 +48,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.state.email)
     return (
       <View>
         <View style={styles.inputContainer}>
