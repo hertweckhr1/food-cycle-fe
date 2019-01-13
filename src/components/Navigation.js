@@ -6,7 +6,7 @@ import { createSwitchNavigator,
   createAppContainer,
   createStackNavigator
 } from 'react-navigation';
-import { Info, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
+import { DonationSchedule, Info, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
 import SignUpForm from './SignUpForm';
 
 // clean this up so it is a function, and only have to input name into function
@@ -30,6 +30,9 @@ const InfoTabBarIcon = ({ tintColor }) => (
 const UserDetailsTabBarIcon = ({ tintColor }) => (
   <Icon name="contact" size={20} color={tintColor} />
 );
+const DonationScheduleTabBarIcon = ({ tintColor }) => (
+  <Icon name="list-box" size={20} color={tintColor} />
+);
 const AddDonationTabBarIcon = ({ tintColor }) => (
   <Icon name="add-circle" size={20} color={tintColor} />
 );
@@ -42,28 +45,35 @@ const TabNavigator = createBottomTabNavigator({
     UserDetails: {
       screen: UserDetails,
       navigationOptions: {
-        label: 'User Details',
+        title: 'User Details',
         tabBarIcon: UserDetailsTabBarIcon
       }
     },
     AddDonation: {
       screen: AddDonation,
       navigationOptions: {
-        label: 'Add Donation',
+        title: 'Add Donation',
         tabBarIcon: AddDonationTabBarIcon
       }
     },
     Info: {
       screen:Info,
       navigationOptions: {
-        label: 'Q & A',
+        title: 'Q & A',
         tabBarIcon: InfoTabBarIcon
+      }
+    },
+    DonationSchedule: {
+      screen: DonationSchedule,
+      navigationOptions: {
+        title: 'My Donations',
+        tabBarIcon: DonationScheduleTabBarIcon
       }
     },
     Settings: {
       screen: Settings,
       navigationOptions: {
-        label: 'Settings',
+        title: 'Settings',
         tabBarIcon: SettingsTabBarIcon
       }
     },

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation';
+import SignUpForm from './SignUpForm'
 import NavigationService from './NavigationService';
 
 class FoodCycle extends Component {
