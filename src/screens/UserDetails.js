@@ -10,12 +10,12 @@ class UserDetails extends React.Component {
           <Grid>
             <Row>
               <Col style={{ backgroundColor: '#FF4500', height: 200,
-                margin: 10,  borderRadius: 8}}>
+                margin: 10, marginRight: 7,  borderRadius: 8}}>
                 <Text style={styles.containerHeaderText}>Donations Offered Today</Text>
                 <Text style={styles.numberText}>5</Text>
               </Col>
               <Col style={{ backgroundColor: 'gold', height: 200,
-                marginTop: 10, marginLeft: 10, marginRight: 10, borderRadius: 8 }}>
+                margin: 10, marginLeft: 7, borderRadius: 8 }}>
                 <Text style={styles.containerHeaderText}>Pickups Scheduled</Text>
                 <Text style={styles.numberText}>2</Text>
               </Col>
