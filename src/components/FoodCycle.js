@@ -77,7 +77,9 @@ class FoodCycle extends Component {
 
   render() {
     const screenProps = {
-      loginUserCallback: this.onLogIn
+      loginUserCallback: this.onLogIn,
+      donations: this.state.donations,
+      user: this.state.user
     }
     return <Navigation
       ref={navigatorRef => {

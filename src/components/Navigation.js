@@ -15,9 +15,11 @@ class Navigation extends Component {
   render() {
     console.log(JSON.stringify({test: true, props: this.props}, null, 2))
     const screenProps = {
-      loginUserCallback: this.props.screenProps.loginUserCallback
+      loginUserCallback: this.props.screenProps.loginUserCallback,
+      donations: this.props.screenProps.donations,
+      user: this.props.screenProps.user
     }
-    return <AppContainer navigation={this.props.navigation} screenProps={screenProps} />;
+    return <AppContainer screenProps={screenProps} />;
   }
 }
 

@@ -4,6 +4,9 @@ import { Container, Left, Right, Content, ListItem, Text, Separator } from 'nati
 
 class Settings extends React.Component {
   render() {
+    console.log(JSON.stringify({test: true, props: this.props}, null, 2))
+    console.log(this.props.screenProps.user)
+    const user = this.props.screenProps.user
     return (
       <ScrollView>
         <Container>
@@ -16,7 +19,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>Company Name</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>Central Coop</Text>
+                <Text style={styles.personalText}>{user['company_name']}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -24,7 +27,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>Point of Contact</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>Theresa Redmond</Text>
+                <Text style={styles.personalText}>{user['point_of_contact']}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -32,7 +35,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>Email</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>Theresa@centralcoop.coop</Text>
+                <Text style={styles.personalText}>{user['email']}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -51,7 +54,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>Street Address</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>1600 E Madison St</Text>
+                <Text style={styles.personalText}>{user['street_address']}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -59,7 +62,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>Street Address2</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>--</Text>
+                <Text style={styles.personalText}>{user['street_address2']}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -67,7 +70,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>City</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>Seattle</Text>
+                <Text style={styles.personalText}>{user['city']}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -75,7 +78,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>State</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>WA</Text>
+                <Text style={styles.personalText}>{user['state']}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -83,7 +86,7 @@ class Settings extends React.Component {
                 <Text style={styles.fieldText}>Zip</Text>
               </Left>
               <Right>
-                <Text style={styles.personalText}>98122</Text>
+                <Text style={styles.personalText}>{user['zip']}</Text>
               </Right>
             </ListItem>
             <Separator bordered>

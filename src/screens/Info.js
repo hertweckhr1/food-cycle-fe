@@ -14,6 +14,7 @@ const dataArray = [
 ];
 
 class Info extends Component {
+
   _renderHeader(item, expanded) {
     return (
       <View style={{
