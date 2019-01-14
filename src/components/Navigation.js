@@ -111,7 +111,7 @@ const StackNavigator = createStackNavigator({
         headerRight: (
           <Icon
             style={{ paddingRight: 30, color: 'white' }}
-            onPress={() => navigation.openDrawer()}
+            onPress={() => navigation.openDrawer('Home')}
             name="log-out"
             size={30}
           />

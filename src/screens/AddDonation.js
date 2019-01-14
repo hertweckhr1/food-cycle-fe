@@ -6,10 +6,12 @@ import {
   View,
   TextInput,
   TouchableHighlight,
+  TouchableOpacity,
   Alert,
   ScrollView,
 } from 'react-native';
 import axios from 'axios';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
 
 class AddDonation extends Component {
@@ -24,6 +26,16 @@ class AddDonation extends Component {
     pickupStartTime: '2019-05-15',
     pickupEndTime: '',
     error: '',
+    istDateTimePickerVisible: 'false',
+  };
+
+  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+
+  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+
+  _handleDatePicked = (date) => {
+    console.log('A date has been picked: ', date);
+    this._hideDateTimePicker();
   };
 
   onClickListener = (viewId) => {
@@ -96,6 +108,14 @@ class AddDonation extends Component {
                 onChangeText={pickupDetails => this.setState({ pickupDetails })}/>
           </View>
           <View style={styles.inputContainer}>
+          <TouchableOpacity onPress={this._showDateTimePicker}>
+          <Text>Show DatePicker</Text>
+          </TouchableOpacity>
+            <DateTimePicker
+            isVisible={this.state.isDateTimePickerVisible}
+            onConfirm={this._handleDatePicked}
+            onCancel={this._hideDateTimePicker}
+          />
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
