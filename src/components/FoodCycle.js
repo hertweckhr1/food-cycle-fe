@@ -7,11 +7,13 @@ class FoodCycle extends Component {
   state = {
     user: {},
     donations: [],
+    token: '',
   }
 
   loadDonations = () => {
+    const donationURL = 'http://127.0.0.1:8000/api/donation/donations/'
     axios
-    .get('http://127.0.0.1:8000/api/donation/donations/')
+    .get(donationURL, { headers: { Authorization: "Token " + this.state.token}})
     .then(response => {
       console.log('Loaded Donations');
       const donationList = response.data.map(donation => {
@@ -59,8 +61,12 @@ class FoodCycle extends Component {
       .then(response => {
         console.log('API login success!');
         console.log("Token " + response.data['token'])
+        this.setState({
+          token: response.data['token']
+        })
+        console.log(this.state.token)
         axios
-          .get(userURL, { headers: { Authorization: "Token " + response.data['token']}})
+          .get(userURL, { headers: { Authorization: "Token " + this.state.token}})
           .then(response => {
             console.log('I got the user info!')
             // console.log(response.data)
@@ -69,7 +75,7 @@ class FoodCycle extends Component {
               error: '',
             });
             console.log(this.state.user)
-            // this.loadDonations();
+            this.loadDonations();
 
             NavigationService.navigate('Dashboard', { user: this.state.user });
           })
@@ -77,24 +83,12 @@ class FoodCycle extends Component {
             console.log('error!');
             // this.setState({error: 'Token not working'})
           });
-        // console.log(response.data);
-        // this.setState({
-        //   email: '',
-        //   password: '',
-        //   error: '',
-        //   token: response.data['token']
-        // });
       })
       .catch(error => {
         console.log(error.response.data.errors);
         // this.setState({error: 'Log attempt failed. Please try again.'});
       });
   }
-
-  componentDidMount() {
-    this.loadDonations();
-  }
-
 
   render() {
     const screenProps = {

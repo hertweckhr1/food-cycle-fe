@@ -29,10 +29,10 @@ class AddDonation extends Component {
     isStartTimePickerVisible: 'false',
   };
 
-  handleStartDatePicked = () => {
+  handleStartDatePicked = (date) => {
     console.log('A date has been picked:');
     this.setState({
-      isStartTimePickerVisible: false
+      isStartTimePickerVisible: false,
     })
   };
 
@@ -111,10 +111,15 @@ class AddDonation extends Component {
                 onChangeText={pickupDetails => this.setState({ pickupDetails })}/>
           </View>
           <View style={styles.inputContainer}>
-          <TouchableOpacity style={styles.button} onPress={this.showStartTimePicker}>
-            <Text style={styles.dateText}>Start Time</Text>
+            <Text>{this.state.pickupStartTime}</Text>
+            <TouchableOpacity style={styles.button} onPress={this.showStartTimePicker}>
+              <Text style={styles.dateText}>Start Time</Text>
             </TouchableOpacity>
-              <DateTimePicker
+            <DateTimePicker
+              cancelTextIOS={'Exit'}
+              confirmTextIOS={'OK'}
+              cancelTextStyle={{color: 'red', fontSize: 20}}
+              confirmTextStyle={{color: 'blue', fontSize: 20}}
               isVisible={this.state.isStartTimePickerVisible}
               onConfirm={this.handleStartDatePicked}
               onCancel={this.hideStartTimePicker}
