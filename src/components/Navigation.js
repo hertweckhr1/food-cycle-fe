@@ -8,6 +8,8 @@ import { createSwitchNavigator,
 } from 'react-navigation';
 import { DonationSchedule, Info, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
 import SignUpForm from './SignUpForm';
+import NavigationService from './NavigationService';
+
 
 // clean this up so it is a function, and only have to input name into function
 class Navigation extends Component {
@@ -19,7 +21,11 @@ class Navigation extends Component {
       donations: this.props.screenProps.donations,
       user: this.props.screenProps.user
     }
-    return <AppContainer screenProps={screenProps} />;
+    return <AppContainer
+      ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef)
+      }}
+      screenProps={screenProps} />;
   }
 }
 

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation';
-import SignUpForm from './SignUpForm'
-import NavigationService from './NavigationService';
-import { NavigationActions } from 'react-navigation';
+import NavigationService from './NavigationService'
 
 class FoodCycle extends Component {
   state = {
@@ -104,11 +102,7 @@ class FoodCycle extends Component {
       donations: this.state.donations,
       user: this.state.user
     }
-    return <Navigation
-      ref={navigatorRef => {
-          NavigationService.setTopLevelNavigator(navigatorRef)
-      }}
-      screenProps={screenProps}/>;
+    return <Navigation screenProps={screenProps}/>;
   }
 }
 
