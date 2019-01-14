@@ -14,14 +14,14 @@ class UserDetails extends React.Component {
                 <Text style={styles.containerHeaderText}>Donations Offered Today</Text>
                 <Text style={styles.numberText}>5</Text>
               </Col>
-              <Col style={{ backgroundColor: 'gold', height: 200,
+              <Col style={{ backgroundColor: '#9ACD32', height: 200,
                 margin: 10, marginLeft: 7, borderRadius: 8 }}>
                 <Text style={styles.containerHeaderText}>Pickups Scheduled</Text>
                 <Text style={styles.numberText}>2</Text>
               </Col>
             </Row>
             <Row style={{marginTop: 10}}>
-              <Col style={{ backgroundColor: '#9ACD32', height: 200,
+              <Col style={{ backgroundColor: '#339933', height: 200,
                 marginTop: 20, marginLeft: 10, marginRight: 10,  borderRadius: 8  }}>
                 <Text style={styles.containerHeaderText}>Total Donations Contributed</Text>
                 <Text style={styles.numberText}>57</Text>

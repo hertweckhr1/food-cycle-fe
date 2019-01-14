@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navigation from './Navigation';
 import SignUpForm from './SignUpForm'
 import NavigationService from './NavigationService';
+import { NavigationActions } from 'react-navigation';
 
 class FoodCycle extends Component {
   state = {
@@ -70,8 +71,9 @@ class FoodCycle extends Component {
               error: '',
             });
             console.log(this.state.user)
-            console.log(navigatorRef)
-            NavigationService.navigate('Dashboard')
+            // this.loadDonations();
+
+            NavigationService.navigate('Dashboard', { user: this.state.user });
           })
           .catch(error => {
             console.log('error!');
@@ -104,7 +106,7 @@ class FoodCycle extends Component {
     }
     return <Navigation
       ref={navigatorRef => {
-        NavigationService.setTopLevelNavigator(navigatorRef);
+          NavigationService.setTopLevelNavigator(navigatorRef)
       }}
       screenProps={screenProps}/>;
   }
