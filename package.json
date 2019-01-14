@@ -16,7 +16,6 @@
     "react-native-accordion": "^1.0.1",
     "react-native-axios": "^0.17.1",
     "react-native-check-box": "^2.1.7",
-    "react-native-datepicker": "^1.7.2",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-ionicons": "^4.5.0",
     "react-native-modal-datetime-picker": "^6.0.0",

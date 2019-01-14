@@ -10,7 +10,6 @@ import {
   ScrollView,
 } from 'react-native';
 import axios from 'axios';
-import DatePicker from 'react-native-datepicker'
 
 
 class AddDonation extends Component {
@@ -97,30 +96,6 @@ class AddDonation extends Component {
                 onChangeText={pickupDetails => this.setState({ pickupDetails })}/>
           </View>
           <View style={styles.inputContainer}>
-            <DatePicker
-              style={{width: 200}}
-              date={this.state.pickupStartTime}
-              mode="date"
-              placeholder="select date"
-              format="YYYY-MM-DD"
-              minDate="2016-05-01"
-              maxDate="2016-06-01"
-              confirmBtnText="Confirm"
-              cancelBtnText="Cancel"
-              customStyles={{
-                dateIcon: {
-                  position: 'absolute',
-                  left: 0,
-                  top: 4,
-                  marginLeft: 0
-                },
-                dateInput: {
-                  marginLeft: 36
-                }
-                // ... You can check the source to find the other keys.
-              }}
-              onDateChange={(pickupStartTime) => {this.setState({date: pickupStartTime})}}
-            />
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
