@@ -28,7 +28,7 @@ class UserDetails extends React.Component {
               </Col>
             </Row>
             <Row style={{marginTop: 20}}>
-              <Col style={{ backgroundColor: 'tomato', height: 200,
+              <Col style={{ backgroundColor: 'tomato', height: 180,
                 marginTop: 20, marginLeft: 10, marginRight: 10, borderRadius: 8 }}>
                 <Text style={styles.containerHeaderText}>Meals Donated Equivalent</Text>
                 <Text style={styles.numberText}>103</Text>

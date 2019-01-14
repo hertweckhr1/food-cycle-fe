@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet, TouchableHighlight } from 'react-native'
 import { Container, Left, Right, Content, ListItem, Text, Separator } from 'native-base';
+import NavigationService from '../components/NavigationService';
 
 class Settings extends React.Component {
   render() {
@@ -90,13 +91,20 @@ class Settings extends React.Component {
               </Right>
             </ListItem>
             <Separator bordered>
-                <Text>PASSWORD</Text>
+              <Text>PASSWORD</Text>
             </Separator>
             <ListItem>
               <Text style={styles.passwordText}>Change Password</Text>
             </ListItem>
             <Separator bordered>
+              <Text>LOGOUT</Text>
             </Separator>
+            <ListItem>
+              <TouchableHighlight style={styles.buttonContainer}
+                onPress={() => NavigationService.navigate('Home')}>
+                  <Text>Logout</Text>
+              </TouchableHighlight>
+            </ListItem>
           </Content>
         </Container>
       </ScrollView>
@@ -117,7 +125,16 @@ const styles = StyleSheet.create({
     color: 'blue',
     textDecorationLine: 'underline',
     fontFamily: 'Futura',
-  }
+  },
+  buttonContainer: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+  },
 })
 
 export { Settings };
