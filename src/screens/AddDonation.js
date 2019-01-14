@@ -26,17 +26,20 @@ class AddDonation extends Component {
     pickupStartTime: '2019-05-15',
     pickupEndTime: '',
     error: '',
-    istDateTimePickerVisible: 'false',
+    isStartTimePickerVisible: 'false',
   };
 
-  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
-
-  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
-
-  _handleDatePicked = (date) => {
-    console.log('A date has been picked: ', date);
-    this._hideDateTimePicker();
+  handleStartDatePicked = () => {
+    console.log('A date has been picked:');
+    this.setState({
+      isStartTimePickerVisible: false
+    })
   };
+
+  showStartTimePicker = () => this.setState({ isStartTimePickerVisible: true });
+
+  hideStartTimePicker = () => this.setState({ isStartTimePickerVisible: false });
+
 
   onClickListener = (viewId) => {
     Alert.alert("Alert", "Button pressed "+viewId);
@@ -108,14 +111,16 @@ class AddDonation extends Component {
                 onChangeText={pickupDetails => this.setState({ pickupDetails })}/>
           </View>
           <View style={styles.inputContainer}>
-          <TouchableOpacity onPress={this._showDateTimePicker}>
-          <Text>Show DatePicker</Text>
-          </TouchableOpacity>
-            <DateTimePicker
-            isVisible={this.state.isDateTimePickerVisible}
-            onConfirm={this._handleDatePicked}
-            onCancel={this._hideDateTimePicker}
-          />
+          <TouchableOpacity style={styles.button} onPress={this.showStartTimePicker}>
+            <Text style={styles.dateText}>Start Time</Text>
+            </TouchableOpacity>
+              <DateTimePicker
+              isVisible={this.state.isStartTimePickerVisible}
+              onConfirm={this.handleStartDatePicked}
+              onCancel={this.hideStartTimePicker}
+              mode={'datetime'}
+              is24Hour={true}
+            />
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
@@ -198,6 +203,19 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'blue',
     padding: 5
+  },
+  button: {
+    width: 250,
+    height: 50,
+    backgroundColor: 'blue',
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: 15,
+  },
+  dateText: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
   }
 });
 
