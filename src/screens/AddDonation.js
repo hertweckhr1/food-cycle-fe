@@ -21,7 +21,6 @@ import ModalDropdown from 'react-native-modal-dropdown';
 class AddDonation extends Component {
   // doner should be user signed in
   state = {
-    doner: '',
     productType: '',
     productDescription: '',
     measurement: '',
@@ -32,6 +31,9 @@ class AddDonation extends Component {
     error: '',
     isStartTimePickerVisible: false,
     isEndTimePickerVisible: false,
+    productOptions: ["Meat or Fish", "Produce", "Dairy", "Beverages",
+      "Chilled or Frozen", "Shelf Stable"],
+    measurementOptions: ["lb", "crates", "liters", "gallons", "bags", "pieces"],
   };
 
   handleStartDatePicked = (datetime) => {
@@ -101,6 +103,8 @@ class AddDonation extends Component {
   }
 
   render() {
+    console.log(this.props.screenProps)
+    console.log(this.state)
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -113,9 +117,8 @@ class AddDonation extends Component {
               dropdownTextStyle={{color: 'black', backgroundColor: '#9ACD32',
                 width:130, textAlign: 'center', fontFamily: 'Futura'}}
               dropdownTextHighlightStyle={{backgroundColor: 'tomato'}}
-              onSelect={ productType => this.setState({ productType })}
-              options={["Meat or Fish", "Produce", "Dairy", "Beverages",
-              "Chilled or Frozen", "Shelf Stable"]}
+              options={this.state.productOptions}
+              onSelect={ value => this.setState({ productType: (String(this.state.productOptions[value]) )})}
             />
           </View>
 
@@ -135,8 +138,8 @@ class AddDonation extends Component {
               dropdownTextStyle={{color: 'black', backgroundColor: '#9ACD32',
                 width:80, textAlign: 'center', fontFamily: 'Futura'}}
               dropdownTextHighlightStyle={{backgroundColor: 'tomato'}}
-              onSelect={measurement => this.setState({ measurement })}
-              options={["lb", "crates", "liters", "gallons", "bags", "pieces"]}
+              onSelect={ value => this.setState({ measurement: (String(this.state.measurementOptions[value]) )})}
+              options={this.state.measurementOptions}
             />
           </View>
 
@@ -199,7 +202,7 @@ class AddDonation extends Component {
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
           <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
-            onPress={() => this.onSubmitDonation()}
+            onPress={() => this.props.screenProps.addDonationCallback(this.state)}
           >
             <Text style={styles.loginText}>Add Donation</Text>
           </TouchableHighlight>

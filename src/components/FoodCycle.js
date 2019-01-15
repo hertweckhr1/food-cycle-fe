@@ -30,11 +30,18 @@ class FoodCycle extends Component {
   };
 
   addDonation = (newDonation) => {
+    console.log('Here we go')
+    console.log(newDonation)
+    const {productType, productDescription, measurement, quantity, pickupDetails, pickupEndTime, pickupStartTime } = newDonation
+    console.log(newDonation['productType'])
     const apiPayLoad = {
-      ...newDonation,
+      user: this.state.user['id'], product_type: productType, product_description: productDescription,
+      product_measurement: measurement, quantity: quantity, pickup_details: pickupDetails,
+      pickup_starttime: pickupStartTime, pickup_endtime: pickupEndTime
     };
+    console.log(apiPayLoad)
     axios
-    .post('http://127.0.0.1:8000/api/donation/donations/', apiPayLoad)
+    .post('http://127.0.0.1:8000/api/donation/donations/', apiPayLoad, { headers: { Authorization: "Token " + this.state.token}})
     .then(response => {
       console.log('added donation!');
       console.log(response);
@@ -47,6 +54,7 @@ class FoodCycle extends Component {
     })
     .catch((error) => {
       console.log('donation adding error')
+      console.log(error);
     })
   }
 
@@ -94,7 +102,8 @@ class FoodCycle extends Component {
     const screenProps = {
       loginUserCallback: this.onLogIn,
       donations: this.state.donations,
-      user: this.state.user
+      user: this.state.user,
+      addDonationCallback: this.addDonation,
     }
     return <Navigation screenProps={screenProps}/>;
   }

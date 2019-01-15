@@ -19,7 +19,8 @@ class Navigation extends Component {
     const screenProps = {
       loginUserCallback: this.props.screenProps.loginUserCallback,
       donations: this.props.screenProps.donations,
-      user: this.props.screenProps.user
+      user: this.props.screenProps.user,
+      addDonationCallback: this.props.screenProps.addDonationCallback,
     }
     return <AppContainer
       ref={navigatorRef => {
