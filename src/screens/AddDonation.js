@@ -51,6 +51,29 @@ class AddDonation extends Component {
     // console.log(this.state.isStartTimePickerVisible)
   };
 
+  onSubmit = (event) => {
+    event.preventDefault();
+    // const { text, emoji } = this.state;
+
+    console.log(event);
+    this.props.screenProps.addDonationCallback(this.state);
+    this.setState({
+      productType: '',
+      productDescription: '',
+      measurement: '',
+      quantity: '',
+      pickupDetails: '',
+      pickupStartTime: '',
+      pickupEndTime: '',
+      error: '',
+      isStartTimePickerVisible: false,
+      isEndTimePickerVisible: false,
+      productOptions: ["Meat or Fish", "Produce", "Dairy", "Beverages",
+        "Chilled or Frozen", "Shelf Stable"],
+      measurementOptions: ["lb", "crates", "liters", "gallons", "bags", "pieces"],
+    });
+  }
+
   showStartTimePicker = () => this.setState({ isStartTimePickerVisible: true });
   hideStartTimePicker = () => this.setState({ isStartTimePickerVisible: false });
 
@@ -70,36 +93,6 @@ class AddDonation extends Component {
 
   onClickListener = (viewId) => {
     Alert.alert("Alert", "Button pressed "+viewId);
-  }
-
-  onSubmitDonation = () => {
-    // Doner needs to automatically be user logged in in axios post request
-    console.log('Button Pressed!')
-    const { doner, productType, productDescription, measurement,
-      quantity, pickupDetails, pickupStartTime, pickupEndTime } = this.state
-    const url = `http://127.0.0.1:8000/api/donation/donations`;
-    axios
-      .post(url, { user: doner, product_type: productType, product_description: productDescription,
-        product_measurement: measurement, quantity: quantity, pickup_details: pickupDetails,
-        pickup_starttime: pickupStartTime, pickup_endtime: pickupEndTime})
-      .then(response => {
-        console.log('API login success!');
-        console.log(response);
-        this.setState({
-          productType: '',
-          productDescription: '',
-          measurement: '',
-          quantity: '',
-          pickupDetails: '',
-          pickupStartTime: '',
-          pickupEndTime: '',
-        });
-        this.setState({error: 'Donation successfully posted.'})
-      })
-      .catch(error => {
-        console.log(error.response.data.errors);
-        this.setState({error: 'Donation attempt failed. Please try again.'})
-      });
   }
 
   render() {
@@ -202,7 +195,7 @@ class AddDonation extends Component {
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
           <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
-            onPress={() => this.props.screenProps.addDonationCallback(this.state)}
+            onPress={this.onSubmit}
           >
             <Text style={styles.loginText}>Add Donation</Text>
           </TouchableHighlight>

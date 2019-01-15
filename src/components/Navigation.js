@@ -20,6 +20,7 @@ class Navigation extends Component {
       loginUserCallback: this.props.screenProps.loginUserCallback,
       donations: this.props.screenProps.donations,
       user: this.props.screenProps.user,
+      users: this.props.screenProps.users,
       addDonationCallback: this.props.screenProps.addDonationCallback,
     }
     return <AppContainer

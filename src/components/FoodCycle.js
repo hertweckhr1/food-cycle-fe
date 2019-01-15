@@ -8,7 +8,27 @@ class FoodCycle extends Component {
     user: {},
     donations: [],
     token: '',
+    users: [],
   }
+
+  loadUsers = () => {
+    const userURL = 'http://127.0.0.1:8000/api/user/donee-info/'
+    axios
+    .get(userURL, { headers: { Authorization: "Token " + this.state.token}})
+    .then(response => {
+      console.log('Loaded Users');
+      const userList = response.data.map(user => {
+        return user;
+      })
+      this.setState({
+        users: userList
+      });
+    })
+    .catch(error => {
+      console.log('users load error');
+      console.log(error);
+    });
+  };
 
   loadDonations = () => {
     const donationURL = 'http://127.0.0.1:8000/api/donation/donations/'
@@ -51,6 +71,8 @@ class FoodCycle extends Component {
       this.setState({
         donations,
       })
+      NavigationService.navigate('DonationSchedule');
+
     })
     .catch((error) => {
       console.log('donation adding error')
@@ -84,6 +106,7 @@ class FoodCycle extends Component {
             });
             console.log(this.state.user)
             this.loadDonations();
+            this.loadUsers();
 
             NavigationService.navigate('Dashboard', { user: this.state.user });
           })
@@ -103,6 +126,7 @@ class FoodCycle extends Component {
       loginUserCallback: this.onLogIn,
       donations: this.state.donations,
       user: this.state.user,
+      users: this.state.users,
       addDonationCallback: this.addDonation,
     }
     return <Navigation screenProps={screenProps}/>;
