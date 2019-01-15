@@ -8,7 +8,13 @@ class UserDetails extends React.Component {
   render() {
     const { user, donations } = this.props.screenProps
     const filteredDonations = donations.filter(donation => donation['user'] === user['id']);
-    const donationsToday = donations.filter(donation => donation['pickup_starttime'] == new Date());
+    const today = new Date();
+    // const donationsToday = donations.filter(donation => donation['pickup_starttime'].setHours(0,0,0,0) == today.setHours(0,0,0,0));
+    // console.log('2019-01-15T08:30:00Z'.setHours(0,0,0,0))
+    //
+    // console.log(totalDonations)
+    // console.log(today),
+    // console.log(today.setHours(0,0,0,0))
 
     return (
       <Container>
@@ -17,7 +23,7 @@ class UserDetails extends React.Component {
               <Col style={{ backgroundColor: '#FF4500', height: 200,
                 margin: 10, marginRight: 7,  borderRadius: 8}}>
                 <Text style={styles.containerHeaderText}>Donations Offered Today</Text>
-                <Text style={styles.numberText}>{donationsToday.length}</Text>
+                <Text style={styles.numberText}>{}</Text>
               </Col>
               <Col style={{ backgroundColor: '#9ACD32', height: 200,
                 margin: 10, marginLeft: 7, borderRadius: 8 }}>
