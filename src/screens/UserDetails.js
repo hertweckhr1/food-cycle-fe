@@ -3,8 +3,13 @@ import { Container } from 'native-base';
 import {Text, StyleSheet} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
+// figure out how to filter donations from today
 class UserDetails extends React.Component {
   render() {
+    const { user, donations } = this.props.screenProps
+    const filteredDonations = donations.filter(donation => donation['user'] === user['id']);
+    const donationsToday = donations.filter(donation => donation['pickup_starttime'] == new Date());
+
     return (
       <Container>
           <Grid>
@@ -12,7 +17,7 @@ class UserDetails extends React.Component {
               <Col style={{ backgroundColor: '#FF4500', height: 200,
                 margin: 10, marginRight: 7,  borderRadius: 8}}>
                 <Text style={styles.containerHeaderText}>Donations Offered Today</Text>
-                <Text style={styles.numberText}>5</Text>
+                <Text style={styles.numberText}>{donationsToday.length}</Text>
               </Col>
               <Col style={{ backgroundColor: '#9ACD32', height: 200,
                 margin: 10, marginLeft: 7, borderRadius: 8 }}>
@@ -24,7 +29,7 @@ class UserDetails extends React.Component {
               <Col style={{ backgroundColor: '#339933', height: 200,
                 marginTop: 20, marginLeft: 10, marginRight: 10,  borderRadius: 8  }}>
                 <Text style={styles.containerHeaderText}>Total Donations Contributed</Text>
-                <Text style={styles.numberText}>57</Text>
+                <Text style={styles.numberText}>{filteredDonations.length}</Text>
               </Col>
             </Row>
             <Row style={{marginTop: 20}}>

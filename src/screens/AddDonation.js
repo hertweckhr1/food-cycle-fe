@@ -109,8 +109,9 @@ class AddDonation extends Component {
             <Text style={styles.dateText}>Product Type</Text>
             <ModalDropdown
               textStyle={{color: 'gray', padding: 30, fontFamily: 'Futura'}}
+              dropdownStyle={{height: 210}}
               dropdownTextStyle={{color: 'black', backgroundColor: '#9ACD32',
-                width:80, textAlign: 'center', fontFamily: 'Futura'}}
+                width:130, textAlign: 'center', fontFamily: 'Futura'}}
               dropdownTextHighlightStyle={{backgroundColor: 'tomato'}}
               onSelect={ productType => this.setState({ productType })}
               options={["Meat or Fish", "Produce", "Dairy", "Beverages",
@@ -129,6 +130,7 @@ class AddDonation extends Component {
           <View style={styles.inputContainer}>
             <Text style={styles.dateText}>Measurement</Text>
             <ModalDropdown
+              dropdownStyle={{height: 210}}
               textStyle={{color: 'gray', padding: 30, fontFamily: 'Futura'}}
               dropdownTextStyle={{color: 'black', backgroundColor: '#9ACD32',
                 width:80, textAlign: 'center', fontFamily: 'Futura'}}
