@@ -9,8 +9,7 @@ class UserDetails extends React.Component {
     const { user, donations, users } = this.props.screenProps
     const filteredDonations = donations.filter(donation => donation['user'] === user['id']);
     const today = new Date();
-    const thisUser = users.find(user => user['id'] == 2)
-    console.log(thisUser)
+    console.log(today)
     // const donationsToday = donations.filter(donation => donation['pickup_starttime'].setHours(0,0,0,0) == today.setHours(0,0,0,0));
     // console.log('2019-01-15T08:30:00Z'.setHours(0,0,0,0))
     //
