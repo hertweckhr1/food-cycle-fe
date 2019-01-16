@@ -19,7 +19,7 @@ import ModalDropdown from 'react-native-modal-dropdown';
 
 
 class AddDonation extends Component {
-  // doner should be user signed in
+  // donor should be user signed in
   state = {
     productType: '',
     productDescription: '',
@@ -83,8 +83,6 @@ class AddDonation extends Component {
       isEndTimePickerVisible: false,
       pickupEndTime: newDate
     })
-    // console.log(this.state.pickupStartTime);
-    // console.log(this.state.isStartTimePickerVisible)
   };
 
   showEndTimePicker = () => this.setState({ isEndTimePickerVisible: true });

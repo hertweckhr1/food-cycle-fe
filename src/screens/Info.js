@@ -4,7 +4,7 @@ import { Container, H1, Content, Icon, Accordion,
 import {StyleSheet, ScrollView} from 'react-native';
 
 const dataArray = [
-  { title: "Who are Doners?", content: "Food markets, restaurants, and farms make up our largest number of doners." },
+  { title: "Who are Donors?", content: "Food markets, restaurants, and farms make up our largest number of donors." },
   { title: "What food can you donate?", content: "Produce, meats/fish, shelf-stable items and dairy" },
   { title: "Who is picking up your food?", content: "Foodbanks and non profits in the area are our major donees.  However if there are other groups in need, we will not keep them from aid." },
   { title: "Can I log my donations while for filing taxes?", content: "Yes please do! Your user history for donations will always be available" },
