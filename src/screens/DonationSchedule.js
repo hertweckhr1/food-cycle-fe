@@ -19,37 +19,48 @@ class DonationSchedule extends Component {
 
 
     console.log(donations['donee'])
-    return (
-      <ScrollView>
+    if (filteredDonations.length == 0) {
+      return (
         <Container>
-          <Content>
-            <View style={styles.titleView}>
-              <H1 style={styles.headerText}>{user['company_name']} Donations</H1>
-            </View>
-            <List dataArray={filteredDonations}
-             renderRow={(donation) =>
-               <ListItem thumbnail>
-                 <Left>
-                   <Text>{moment(donation['pickup_starttime']).format("MMM Do")}</Text>
-                 </Left>
-                 <Body>
-                   <Text>{donation['product_type']}: {donation['product_description']}</Text>
-                   <Text note numberOfLines={1}>Donee: {thisUser(donation['donee'])}</Text>
-                   <Text>{moment(donation['pickup_starttime']).format("YYYY-MM-DD")}</Text>
-                   <Text>{moment(new Date()).format("YYYY-MM-DD")}</Text>
-                 </Body>
-                 <Right>
-                   <Button transparent>
-                     <Text>{donation['status']}</Text>
-                   </Button>
-                 </Right>
-               </ListItem>
-             }>
-            </List>
-          </Content>
+          <View style={styles.titleView}>
+            <H1 style={styles.headerText}>{user['company_name']} Donations</H1>
+          </View>
+          <View>
+            <Text style={styles.noticeText}>You have no donations logged yet</Text>
+          </View>
         </Container>
-      </ScrollView>
-    );
+      )
+    } else {
+      return (
+        <ScrollView>
+          <Container>
+            <Content>
+              <View style={styles.titleView}>
+                <H1 style={styles.headerText}>{user['company_name']} Donations</H1>
+              </View>
+              <List dataArray={filteredDonations}
+               renderRow={(donation) =>
+                 <ListItem thumbnail>
+                   <Left>
+                     <Text>{moment(donation['pickup_starttime']).format("MMM Do")}</Text>
+                   </Left>
+                   <Body>
+                     <Text>{donation['product_type']}: {donation['product_description']}</Text>
+                     <Text note numberOfLines={1}>Donee: {thisUser(donation['donee'])}</Text>
+                   </Body>
+                   <Right>
+                     <Button transparent>
+                       <Text>{donation['status']}</Text>
+                     </Button>
+                   </Right>
+                 </ListItem>
+               }>
+              </List>
+            </Content>
+          </Container>
+        </ScrollView>
+      );
+    }
   }
 }
 
@@ -65,6 +76,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: '#D3D3D3',
     margin: 10,
+  },
+  noticeText: {
+    textAlign: 'center',
+    fontFamily: 'Futura',
+    paddingTop: 20,
+    paddingBottom: 10,
+    color: '#FF4500',
   }
 
 })

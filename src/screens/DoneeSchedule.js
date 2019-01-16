@@ -18,37 +18,49 @@ class DoneeSchedule extends Component {
     }
 
 
-    console.log(donations['donee'])
-    return (
-      <ScrollView>
+    if (filteredDonations.length == 0) {
+      return (
         <Container>
-          <Content>
-            <View style={styles.titleView}>
-              <H1 style={styles.headerText}>{user['company_name']} Donations</H1>
-            </View>
-            <List dataArray={filteredDonations}
-             renderRow={(donation) =>
-               <ListItem thumbnail>
-                 <Left>
-                   <Text>{moment(donation['pickup_starttime']).format("MMM Do")}</Text>
-                 </Left>
-                 <Body>
-                   <Text>{donation['product_type']}: {donation['product_description']}</Text>
-                   <Text note numberOfLines={1}>Donor: {thisUser(donation['user'])}</Text>
-                 </Body>
-                 <Right>
-                   <Button transparent>
-                     <Text>{donation['status']}</Text>
-                   </Button>
-                 </Right>
-               </ListItem>
-             }>
-            </List>
-          </Content>
+          <View style={styles.titleView}>
+            <H1 style={styles.headerText}>{user['company_name']} Picked-Up Donations</H1>
+          </View>
+          <View>
+            <Text style={styles.noticeText}>You have no donations logged yet</Text>
+          </View>
         </Container>
-      </ScrollView>
-    );
-  }
+      )
+    } else {
+      return (
+        <ScrollView>
+          <Container>
+            <Content>
+              <View style={styles.titleView}>
+                <H1 style={styles.headerText}>{user['company_name']} Picked-Up Donations</H1>
+              </View>
+              <List dataArray={filteredDonations}
+               renderRow={(donation) =>
+                 <ListItem thumbnail>
+                   <Left>
+                     <Text>{moment(donation['pickup_starttime']).format("MMM Do")}</Text>
+                   </Left>
+                   <Body>
+                     <Text>{donation['product_type']}: {donation['product_description']}</Text>
+                     <Text note numberOfLines={1}>Donor: {thisUser(donation['user'])}</Text>
+                   </Body>
+                   <Right>
+                     <Button transparent>
+                       <Text>{donation['status']}</Text>
+                     </Button>
+                   </Right>
+                 </ListItem>
+               }>
+              </List>
+            </Content>
+          </Container>
+        </ScrollView>
+      );
+    }
+ }
 }
 
 const styles = StyleSheet.create({
