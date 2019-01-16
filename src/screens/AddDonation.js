@@ -47,8 +47,7 @@ class AddDonation extends Component {
       isStartTimePickerVisible: false,
       pickupStartTime: newDate
     })
-    // console.log(this.state.pickupStartTime);
-    // console.log(this.state.isStartTimePickerVisible)
+
   };
 
   onSubmit = (event) => {

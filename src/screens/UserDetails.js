@@ -2,16 +2,26 @@ import React from 'react';
 import { Container } from 'native-base';
 import {Text, StyleSheet} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import moment from 'moment';
 
 // figure out how to filter donations from today
 class UserDetails extends React.Component {
   render() {
     const { user, donations, users } = this.props.screenProps
     const filteredDonations = donations.filter(donation => donation['user'] === user['id']);
-    const today = new Date();
+    const today = moment(new Date()).format("YYYY-MM-DD")
     console.log(today)
-    // const donationsToday = donations.filter(donation => donation['pickup_starttime'].setHours(0,0,0,0) == today.setHours(0,0,0,0));
-    // console.log('2019-01-15T08:30:00Z'.setHours(0,0,0,0))
+    const donationsToday = filteredDonations.filter(donation =>
+      moment(donation['pickup_starttime']).format("YYYY-MM-DD") == today);
+
+    const pickedupDonations = () => {
+      const items = donationsToday.filter(donation => donation['status'] == 'picked-up')
+      if (items.length > 0) {
+        return items.length;
+      } else {
+        return 0;
+      }
+    }
     //
     // console.log(totalDonations)
     // console.log(today),
@@ -24,12 +34,12 @@ class UserDetails extends React.Component {
               <Col style={{ backgroundColor: '#FF4500', height: 200,
                 margin: 10, marginRight: 7,  borderRadius: 8}}>
                 <Text style={styles.containerHeaderText}>Donations Offered Today</Text>
-                <Text style={styles.numberText}>{}</Text>
+                <Text style={styles.numberText}>{donationsToday.length}</Text>
               </Col>
               <Col style={{ backgroundColor: '#9ACD32', height: 200,
                 margin: 10, marginLeft: 7, borderRadius: 8 }}>
                 <Text style={styles.containerHeaderText}>Pickups Scheduled</Text>
-                <Text style={styles.numberText}>2</Text>
+                <Text style={styles.numberText}>{pickedupDonations()}</Text>
               </Col>
             </Row>
             <Row style={{marginTop: 10}}>

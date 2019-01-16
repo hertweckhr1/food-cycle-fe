@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native' ;
 import { H1, Container, Button, Thumbnail, Body, Left, Right, Content, List, ListItem, Text } from 'native-base';
+import moment from "moment";
 
 class DonationSchedule extends Component {
   render() {
@@ -29,13 +30,13 @@ class DonationSchedule extends Component {
              renderRow={(donation) =>
                <ListItem thumbnail>
                  <Left>
-                   <Text>{(donation['pickup_starttime']).slice(5,10)}</Text>
+                   <Text>{moment(donation['pickup_starttime']).format("MMM Do")}</Text>
                  </Left>
                  <Body>
                    <Text>{donation['product_type']}: {donation['product_description']}</Text>
                    <Text note numberOfLines={1}>Donee: {thisUser(donation['donee'])}</Text>
-                   <Text>{donation['pickup_starttime']}</Text>
-                   <Text>{new Date().toString()}</Text>
+                   <Text>{moment(donation['pickup_starttime']).format("YYYY-MM-DD")}</Text>
+                   <Text>{moment(new Date()).format("YYYY-MM-DD")}</Text>
                  </Body>
                  <Right>
                    <Button transparent>
