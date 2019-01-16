@@ -6,9 +6,11 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 // figure out how to filter donations from today
 class UserDetails extends React.Component {
   render() {
-    const { user, donations } = this.props.screenProps
+    const { user, donations, users } = this.props.screenProps
     const filteredDonations = donations.filter(donation => donation['user'] === user['id']);
     const today = new Date();
+    const thisUser = users.find(user => user['id'] == 2)
+    console.log(thisUser)
     // const donationsToday = donations.filter(donation => donation['pickup_starttime'].setHours(0,0,0,0) == today.setHours(0,0,0,0));
     // console.log('2019-01-15T08:30:00Z'.setHours(0,0,0,0))
     //

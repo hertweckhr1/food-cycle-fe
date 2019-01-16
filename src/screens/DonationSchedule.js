@@ -4,8 +4,19 @@ import { H1, Container, Button, Thumbnail, Body, Left, Right, Content, List, Lis
 
 class DonationSchedule extends Component {
   render() {
-    const { user, donations } = this.props.screenProps
+    const { user, donations, users } = this.props.screenProps
     const filteredDonations = donations.filter(donation => donation['user'] === user['id'])
+
+    const thisUser = (id) => {
+      if (id == null) {
+        return ""
+      } else {
+        const rightUser = users.find(user => user['id'] == id)['company_name'];
+        return rightUser
+      }
+    }
+
+
     console.log(donations['donee'])
     return (
       <ScrollView>
@@ -22,7 +33,7 @@ class DonationSchedule extends Component {
                  </Left>
                  <Body>
                    <Text>{donation['product_type']}: {donation['product_description']}</Text>
-                   <Text note numberOfLines={1}>Donee: {donation['donee']['company_name']}</Text>
+                   <Text note numberOfLines={1}>Donee:{thisUser(donation['donee'])}</Text>
                  </Body>
                  <Right>
                    <Button transparent>
