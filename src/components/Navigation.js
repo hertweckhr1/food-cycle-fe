@@ -22,6 +22,7 @@ class Navigation extends Component {
       user: this.props.screenProps.user,
       users: this.props.screenProps.users,
       addDonationCallback: this.props.screenProps.addDonationCallback,
+      error: this.props.screenProps.error
     }
     return <AppContainer
       ref={navigatorRef => {

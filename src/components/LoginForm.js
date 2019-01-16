@@ -15,36 +15,12 @@ class LoginForm extends Component {
   state = {
     email: '',
     password: '',
-    error: '',
+    error: this.props.screenProps.error,
     token: '',
   };
 
   onClickListener = (viewId) => {
     Alert.alert("Alert", "Button pressed "+viewId);
-  }
-
-  onLogIn2 = () => {
-    console.log('Button Pressed!');
-    const { email: email, password } = this.state
-    const url = `http://127.0.0.1:8000/api/user/token/`;
-    axios
-      .post(url, {email, password})
-      .then(response => {
-        console.log('API login success!');
-        console.log(response.data);
-        this.setState({
-          email: '',
-          password: '',
-          error: '',
-          token: response.data['token']
-        });
-        console.log(this.state.token)
-        this.props.navigation.navigate('Home')
-      })
-      .catch(error => {
-        console.log(error.response.data.errors);
-        this.setState({error: 'Log attempt failed. Please try again.'});
-      });
   }
 
   render() {

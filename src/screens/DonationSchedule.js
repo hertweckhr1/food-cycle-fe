@@ -17,8 +17,6 @@ class DonationSchedule extends Component {
       }
     }
 
-
-    console.log(donations['donee'])
     if (filteredDonations.length == 0) {
       return (
         <Container>

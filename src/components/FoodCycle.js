@@ -120,12 +120,16 @@ class FoodCycle extends Component {
           })
           .catch(error => {
             console.log('error!');
-            // this.setState({error: 'Token not working'})
+            this.setState({
+              error: 'Incorrect username or password. Please try again.',
+            });
           });
       })
       .catch(error => {
         console.log(error.response.data.errors);
-        // this.setState({error: 'Log attempt failed. Please try again.'});
+        this.setState({
+          error: 'Incorrect username or password. Please try again.',
+        });
       });
   }
 
@@ -136,6 +140,7 @@ class FoodCycle extends Component {
       user: this.state.user,
       users: this.state.users,
       addDonationCallback: this.addDonation,
+      error: this.state.error
     }
     return <Navigation screenProps={screenProps}/>;
   }
