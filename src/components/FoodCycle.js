@@ -80,6 +80,14 @@ class FoodCycle extends Component {
     })
   }
 
+  decideUser = () => {
+    if (this.state.user['is_doner']) {
+      NavigationService.navigate('Dashboard', { user: this.state.user });
+    } else {
+      NavigationService.navigate('DoneeDashboard', { user: this.state.user });
+    }
+  }
+
   onLogIn = (email, password) => {
     console.log('Button Pressed!');
     console.log(email)
@@ -107,8 +115,8 @@ class FoodCycle extends Component {
             console.log(this.state.user)
             this.loadDonations();
             this.loadUsers();
+            this.decideUser();
 
-            NavigationService.navigate('DoneeDashboard', { user: this.state.user });
           })
           .catch(error => {
             console.log('error!');
