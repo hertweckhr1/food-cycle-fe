@@ -6,7 +6,7 @@ import { createSwitchNavigator,
   createAppContainer,
   createStackNavigator
 } from 'react-navigation';
-import { DonationSchedule, Info, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
+import { FindByProduct, DoneeSchedule, FindNearYou, DonationSchedule, Info, WelcomeScreen, Settings, UserDetails, AddDonation } from '../screens'
 import SignUpForm from './SignUpForm';
 import NavigationService from './NavigationService';
 
@@ -50,7 +50,7 @@ const SettingsTabBarIcon = ({ tintColor }) => (
   <Icon name="construct" size={20} color={tintColor} />
 );
 
-// tab
+// donortab
 const TabNavigator = createBottomTabNavigator({
     UserDetails: {
       screen: UserDetails,
@@ -77,6 +77,51 @@ const TabNavigator = createBottomTabNavigator({
       screen: DonationSchedule,
       navigationOptions: {
         title: 'My Donations',
+        tabBarIcon: DonationScheduleTabBarIcon
+      }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: {
+        title: 'Settings',
+        tabBarIcon: SettingsTabBarIcon
+      }
+    },
+  },
+  {
+      tabBarOptions: {
+        activeTintColor: 'tomato'
+      }
+    }
+);
+
+// doneetab
+const DoneeTabNavigator = createBottomTabNavigator({
+    FindNearYou: {
+      screen: FindNearYou,
+      navigationOptions: {
+        title: 'Near You',
+        tabBarIcon: UserDetailsTabBarIcon
+      }
+    },
+    FindByProduct: {
+      screen: FindByProduct,
+      navigationOptions: {
+        title: 'By Product',
+        tabBarIcon: AddDonationTabBarIcon
+      }
+    },
+    Info: {
+      screen:Info,
+      navigationOptions: {
+        title: 'Q & A',
+        tabBarIcon: InfoTabBarIcon
+      }
+    },
+    DoneeSchedule: {
+      screen: DoneeSchedule,
+      navigationOptions: {
+        title: 'History',
         tabBarIcon: DonationScheduleTabBarIcon
       }
     },
@@ -125,9 +170,40 @@ const StackNavigator = createStackNavigator({
   }
 );
 
+const DoneeStackNavigator = createStackNavigator({
+    DoneeTabNavigator: DoneeTabNavigator,
+    SignUp: {
+      screen: SignUpForm,
+    }
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerStyle: {
+          borderBottomColor: '#9ACD32',
+          backgroundColor: 'black',
+          borderBottomWidth: 4,
+          height: 70
+        },
+        headerRight: (
+          <Icon
+            style={{ paddingRight: 30, color: 'white' }}
+            onPress={() => navigation.openDrawer('Home')}
+            name="log-out"
+            size={30}
+          />
+        ),
+        headerTitle: <Image style={{width: 100, resizeMode:'contain'}}
+                    source={require('../assets/white-logo.png')} />,
+      };
+    }
+  }
+);
+
 const AppSwitchNavigator = createSwitchNavigator({
   Welcome: { screen: WelcomeScreen},
-  Dashboard: { screen: StackNavigator }
+  Dashboard: { screen: StackNavigator },
+  DoneeDashboard: {screen: DoneeStackNavigator}
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator)

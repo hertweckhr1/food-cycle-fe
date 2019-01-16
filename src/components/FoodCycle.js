@@ -108,7 +108,7 @@ class FoodCycle extends Component {
             this.loadDonations();
             this.loadUsers();
 
-            NavigationService.navigate('Dashboard', { user: this.state.user });
+            NavigationService.navigate('DoneeDashboard', { user: this.state.user });
           })
           .catch(error => {
             console.log('error!');

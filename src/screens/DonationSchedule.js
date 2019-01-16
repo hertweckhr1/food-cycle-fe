@@ -33,7 +33,9 @@ class DonationSchedule extends Component {
                  </Left>
                  <Body>
                    <Text>{donation['product_type']}: {donation['product_description']}</Text>
-                   <Text note numberOfLines={1}>Donee:{thisUser(donation['donee'])}</Text>
+                   <Text note numberOfLines={1}>Donee: {thisUser(donation['donee'])}</Text>
+                   <Text>{donation['pickup_starttime']}</Text>
+                   <Text>{new Date().toString()}</Text>
                  </Body>
                  <Right>
                    <Button transparent>
