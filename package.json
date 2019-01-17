@@ -20,6 +20,7 @@
     "react-native-check-box": "^2.1.7",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-ionicons": "^4.5.0",
+    "react-native-maps": "^0.22.1",
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-modal-dropdown": "^0.6.2",
     "react-navigation": "^3.0.9"

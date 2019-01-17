@@ -22,7 +22,7 @@ class DoneeSchedule extends Component {
       return (
         <Container>
           <View style={styles.titleView}>
-            <H1 style={styles.headerText}>{user['company_name']} Picked-Up Donations</H1>
+            <H1 style={styles.headerText}>{user['company_name']}: Picked-Up Donations</H1>
           </View>
           <View>
             <Text style={styles.noticeText}>You have no donations logged yet</Text>
