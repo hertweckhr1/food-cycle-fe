@@ -14,7 +14,7 @@ import {
 import axios from 'axios';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Moment from 'react-moment';
-import Icon from 'react-native-ionicons';
+import Icon from 'native-base';
 import ModalDropdown from 'react-native-modal-dropdown';
 
 

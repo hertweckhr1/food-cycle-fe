@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   Alert
 } from 'react-native';
-import Icon from 'react-native-ionicons';
+import Icon from 'native-base';
 import axios from 'axios';
 
 class LoginForm extends Component {

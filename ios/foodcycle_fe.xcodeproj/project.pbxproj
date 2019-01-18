@@ -57,7 +57,6 @@
 		DCF606264CFB47A89245F4F4 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C854508C21842629ED5FD50 /* libRNGestureHandler.a */; };
 		E069FC8FA05343ABA0046902 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 174699987ED2412F8D52F759 /* SimpleLineIcons.ttf */; };
 		E7E9A091A6BD4EAB8FEA6B4A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72EC9D19400E4E858F602B30 /* MaterialIcons.ttf */; };
-		F7131A9B00AF411F83BBE811 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67653B68F4A04F38BB4924D2 /* Ionicons.ttf */; };
 		FFD30A1988774ADDB3CF15AA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7CCAC810B914574B76EF8AE /* Octicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -1186,7 +1185,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				F7131A9B00AF411F83BBE811 /* Ionicons.ttf in Resources */,
 				A7A03F2E574E4327A4583311 /* AntDesign.ttf in Resources */,
 				C2A78C54A02849BEBB3D358B /* Entypo.ttf in Resources */,
 				3E406DA0A9604FBE97F1CAC7 /* EvilIcons.ttf in Resources */,

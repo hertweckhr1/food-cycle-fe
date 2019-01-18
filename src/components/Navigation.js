@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Text, View, Image } from 'react-native';
-import Icon from 'react-native-ionicons'
+import Icon from 'native-base'
 import { createSwitchNavigator,
   createBottomTabNavigator,
   createAppContainer,
